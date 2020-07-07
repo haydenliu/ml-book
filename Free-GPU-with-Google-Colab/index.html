@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="A simple tutorial of using free GPU on Google Colab for deep learningGoogle’s Colab provides GPU and it’s totally free. Seriously?
+What is Google Cola">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Hayden Liu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Free GPU with Google Colab"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Hayden Liu"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content=""/>
+    
+
+    <!-- Title -->
+    
+    <title>Free GPU with Google Colab - Hayden Liu</title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/sass/main.css">
+
+
+    <!--[if lt IE 8]>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="/images/logo.svg" alt="" /></span><span class="title">Hayden Liu</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/">Home</a>
+            </li>
+        
+            <li>
+                <a href="/archives">Archives</a>
+            </li>
+        
+            <li>
+                <a href="/about.html">About</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                
+
+    <h1>Free GPU with Google Colab</h1>
+
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<h2 id="A-simple-tutorial-of-using-free-GPU-on-Google-Colab-for-deep-learning"><a href="#A-simple-tutorial-of-using-free-GPU-on-Google-Colab-for-deep-learning" class="headerlink" title="A simple tutorial of using free GPU on Google Colab for deep learning"></a>A simple tutorial of using free GPU on Google Colab for deep learning</h2><p>Google’s Colab provides GPU and it’s totally free. Seriously?</p>
+<h3 id="What-is-Google-Colab"><a href="#What-is-Google-Colab" class="headerlink" title="What is Google Colab?"></a>What is Google Colab?</h3><p><a href="https://colab.research.google.com/notebooks/intro.ipynb" target="_blank" rel="noopener">Google Colab</a> is a free online cloud-based Jupyter notebook environment that allows us to train our machine learning and deep learning models.<br> If you have ever used Jupyter notebook, Colab won’t look strange to you. In fact, you’re going to love Google Colab – you get free access to CPUs and GPUs such as Tesla K80 and even a TPU! </p>
+<p>You can create notebooks in Colab, upload, import and download notebooks, store notebooks, easily share notebooks with others (just like sharing Google Docs), mount your Google Drive to use data stored in there.</p>
+<h3 id="Getting-Google-Colab-Ready"><a href="#Getting-Google-Colab-Ready" class="headerlink" title="Getting Google Colab Ready"></a>Getting Google Colab Ready</h3><ol>
+<li><p>All you need is a Google account and a web browser.</p>
+</li>
+<li><p>Create a folder on your <a href="https://drive.google.com/" target="_blank" rel="noopener">Google Drive</a>. You can name it whatever you like, for example “colab””.<br><img src="/images/colab1.png" alt="create folder on Google Drive"></p>
+</li>
+<li><p>Go to the folder you just created, create a Colab as follows:<br><img src="/images/colab2.png" alt="create a Colab"></p>
+</li>
+<li><p>Open the notebook you just created. You can write and run any Python codes.</p>
+</li>
+</ol>
+<h3 id="Setting-Runtime-Type-CPU-GPU-or-TPU"><a href="#Setting-Runtime-Type-CPU-GPU-or-TPU" class="headerlink" title="Setting Runtime Type (CPU, GPU or TPU)"></a>Setting Runtime Type (CPU, GPU or TPU)</h3><p>It is simple to choose the runtime type (CPU, GPU or TPU). You can just go to Runtime -&gt; Change runtime type:<br><img src="/images/colab3.png" alt="create a Colab"><br>Then select the one you want:<br><img src="/images/colab4.png" alt="create a Colab"></p>
+<ol>
+<li>None (CPU)</li>
+<li>GPU</li>
+<li>TPU</li>
+</ol>
+<p>The specifications of these runtimes are as follows:<br><img src="/images/colab5.png" alt="create a Colab"></p>
+<p>We select GPU runtime In this tutorial.</p>
+<h3 id="Running-codes-on-GPU"><a href="#Running-codes-on-GPU" class="headerlink" title="Running codes on GPU"></a>Running codes on GPU</h3><p>To verify if the free GPU is up, run the following codes in your Colab:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">print(&quot;Version: &quot;, tf.__version__)</span><br><span class="line">print(&quot;GPU is&quot;, &quot;available&quot; if tf.test.is_gpu_available() else &quot;NOT AVAILABLE&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>If it says “GPU is available”, the free GPU is up and running.</p>
+<p>Now feel free to play around with it by running some of the following machine learning examples:</p>
+<ul>
+<li><a href="https://www.tensorflow.org/hub/tutorials/tf2_text_classification" target="_blank" rel="noopener">Text classification</a></li>
+<li><a href="https://tensorflow.org/hub/tutorials/tf2_image_retraining" target="_blank" rel="noopener">Image classification</a></li>
+<li><a href="https://tensorflow.org/hub/tutorials/tf2_arbitrary_image_stylization" target="_blank" rel="noopener">Style Transfer</a></li>
+</ul>
+<h3 id="Reading-files-on-Google-Drive"><a href="#Reading-files-on-Google-Drive" class="headerlink" title="Reading files on Google Drive"></a>Reading files on Google Drive</h3><p>When the input data is from a file, you can read it by following these steps:</p>
+<ol>
+<li><p>First upload the file to your Google Drive.</p>
+</li>
+<li><p>Mount your Google Drive by running the following code on your Colab:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from google.colab import drive</span><br><span class="line">drive.mount(&#39;drive&#x2F;&#39;)</span><br></pre></td></tr></table></figure>
+<p>Follow the instructions to mount your Drive.</p>
+</li>
+<li><p>Run the following code to verify if you have successfully mounted your Drive:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!ls &quot;drive&#x2F;My Drive&quot;</span><br></pre></td></tr></table></figure>
+<p>or the folder you created earlier:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!ls &quot;drive&#x2F;My Drive&#x2F;colab&quot;</span><br></pre></td></tr></table></figure>
+<p>You should be able to see the files on your Drive.</p>
+</li>
+<li><p>Let’s say you want to read a file in “My Drive/colab/data.txt”, run the following code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input_file &#x3D; &quot;drive&#x2F;My Drive&#x2F;colab&#x2F;data.txt&#39;</span><br><span class="line">data &#x3D; open(input_file, &#39;r&#39;).read()</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>The coolest thing Google Colab offers is probably the free GPU (free CPU and TPU as well). It is a great place for everyone to build machine learning and deep learning models.</p>
+
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    
+</div>
+
+
+
+<!-- Comments -->
+<div>
+    
+
+
+</div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                Powered by Hexo.
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/?lang=en" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                    <li><a href="https://www.facebook.com/" class="icon style2 fa-facebook" target="_blank" ><span class="label">Facebook</span></a></li>
+                
+                
+                    <li><a href="https://www.instagram.com/" class="icon style2 fa-instagram" target="_blank" ><span class="label">Instagram</span></a></li>
+                
+                
+                    <li><a href="https://dribbble.com/" class="icon style2 fa-dribbble" target="_blank" ><span class="label">Dribbble</span></a></li>
+                
+                
+                    <li><a href="https://github.com/klugjo/hexo-theme-phantom/commits?author=klugjo" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                    <li><a href="https://plus.google.com/" class="icon style2 fa-google-plus" target="_blank" ><span class="label">Google+</span></a></li>
+                
+                
+                    <li><a href="https://www.behance.net/" class="icon style2 fa-behance" target="_blank" ><span class="label">Behance</span></a></li>
+                
+                
+                    <li><a href="https://500px.com/" class="icon style2 fa-500px" target="_blank" ><span class="label">500px</span></a></li>
+                
+                
+                    <li><a href="\#" class="icon style2 fa-envelope-o" target="_blank" ><span class="label">Email</span></a></li>
+                
+                
+                    <li><a href="\#" class="icon style2 fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; Hayden Liu. All rights reserved</li>
+        </ul>
+    </div>
+</footer>
+    </div>
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- skel -->
+
+<script src="/js/skel.min.js"></script>
+
+
+<!-- Custom Code -->
+
+<script src="/js/util.js"></script>
+
+
+<!--[if lte IE 8]>
+
+<script src="/js/ie/respond.min.js"></script>
+
+<![endif]-->
+
+<!-- Custom Code -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+
+</html>
